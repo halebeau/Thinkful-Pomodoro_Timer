@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "../utils/class-names";
-import { minutesToDuration, secondsToDuration } from "../utils/duration";
+import { secondsToDuration } from "../utils/duration";
 
 function Session({
 ariaValue,
