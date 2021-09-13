@@ -73,7 +73,7 @@ function Pomodoro() {
       }
       return setSession(nextTick);
     },
-    isTimerRunning ? 10 : null
+    isTimerRunning ? 1000 : null
   );
 
   /**
@@ -171,6 +171,7 @@ function Pomodoro() {
                   data-testid="decrease-break"
                   onClick={handleTimeChange}
                   value="decreaseBreak"
+                  disabled={session}
                 >
                   <span className="oi oi-minus" />
                 </button>
@@ -236,7 +237,7 @@ function Pomodoro() {
             </h2>
             {/* TODO: Update message below correctly format the time remaining in the current session */}
             <p className="lead" data-testid="session-sub-title">
-              {session? secondsToDuration(session.timeRemaining) : null} remaining
+              {secondsToDuration(session?.timeRemaining)} remaining
             </p>
           </div>
         </div>
@@ -249,7 +250,7 @@ function Pomodoro() {
                 aria-valuemin="0"
                 aria-valuemax="100"
                 aria-valuenow="0" // TODO: Increase aria-valuenow as elapsed time increases
-                style={{ width: "0%" }} // TODO: Increase width % as elapsed time increases
+                style={{ width: session?.label === "On Break" }} // TODO: Increase width % as elapsed time increases
               />
             </div>
           </div>
